@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head><meta charset="utf-8"><title>Empire of 8 — Chairman Console</title></head>
+<body>
+  <h2>Empire of 8 — Chairman Console</h2>
+  <textarea id="input" placeholder="Enter your command..." rows="6" cols="60"></textarea><br/>
+  <button onclick="send()">Send</button>
+  <pre id="response"></pre>
+  <script>
+    async function send() {
+      const input = document.getElementById('input').value;
+      const res = await fetch('http://localhost:8080/route', {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({task: input})
+      });
+      document.getElementById('response').textContent =
+        JSON.stringify(await res.json(), null, 2);
+    }
+  </script>
+</body>
+</html>

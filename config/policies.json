@@ -1,0 +1,5 @@
+{
+  "spending_limit_zmw": 20000,
+  "auto_execute": false,
+  "approval_required": ["financial", "land", "contract"]
+}
