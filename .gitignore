@@ -1,2 +1,8 @@
 config/credentials.json
 config/token.json
+# Virtual Environment
+myvenv/
+
+# Python cache files
+__pycache__/
+*.pyc
