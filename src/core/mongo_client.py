@@ -1,14 +1,11 @@
 from pymongo import MongoClient
-from dotenv import load_dotenv
-import os
 
-load_dotenv()
+from .settings import MONGO_URI
 
 # ------------------------------------------------------
 # MongoDB Connection
 # ------------------------------------------------------
 
-MONGO_URI = os.getenv("MONGO_URI")
 client = MongoClient(MONGO_URI, uuidRepresentation="standard")
 
 # Main operational DB used by EmpireOf8
