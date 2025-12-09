@@ -175,8 +175,16 @@
       <div class="agent-select">
         <label for="agent">Active agent</label>
         <select id="agent">
-          <option value="coa">COA (Chief Orchestration Agent)</option>
+          <option value="coa">COA (solo)</option>
+          <option value="team">COA + Team (orchestrated)</option>
           <option value="agriculture">Agriculture Agent</option>
+          <option value="finance">Finance &amp; Capital Agent</option>
+          <option value="real_estate">Real Estate &amp; Infrastructure Agent</option>
+          <option value="people">People &amp; Organization Agent</option>
+          <option value="technology">Technology &amp; Automation Agent</option>
+          <option value="growth">Sales &amp; Growth Agent</option>
+          <option value="governance">Regulation &amp; Governance Agent</option>
+          <option value="health">Health &amp; Education Agent</option>
         </select>
         <span id="status" class="status">Idle</span>
       </div>
@@ -231,7 +239,39 @@
       inputEl.focus();
 
       const agent = agentSelectEl.value;
-      const path = agent === 'agriculture' ? '/route/agriculture' : '/route';
+
+      let path = '/route';
+      switch (agent) {
+        case 'team':
+          path = '/route/team';
+          break;
+        case 'agriculture':
+          path = '/route/agriculture';
+          break;
+        case 'finance':
+          path = '/route/finance';
+          break;
+        case 'real_estate':
+          path = '/route/real_estate';
+          break;
+        case 'people':
+          path = '/route/people';
+          break;
+        case 'technology':
+          path = '/route/technology';
+          break;
+        case 'growth':
+          path = '/route/growth';
+          break;
+        case 'governance':
+          path = '/route/governance';
+          break;
+        case 'health':
+          path = '/route/health';
+          break;
+        default:
+          path = '/route';
+      }
 
       sendBtn.disabled = true;
       statusEl.textContent = `Calling ${path}...`;
@@ -272,7 +312,7 @@
     });
 
     // Initial system hint
-    appendMessage('agent', 'Welcome to the Empire of 8 Chairman Console. Select an agent (COA or Agriculture) in the top-right, then type a command. The UI will call either /route (COA) or /route/agriculture and show the JSON response from the backend.', 'System');
+    appendMessage('agent', 'Welcome to the Empire of 8 Chairman Console. Select an agent in the top-right. "COA (solo)" answers directly; "COA + Team" has the chairman consult relevant domain agents and then synthesize a board-level answer. The UI will call the corresponding /route/* endpoint and show the JSON response from the backend.', 'System');
   </script>
 </body>
 </html>
