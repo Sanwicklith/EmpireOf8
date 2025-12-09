@@ -6,3 +6,5 @@ myvenv/
 # Python cache files
 __pycache__/
 *.pyc
+.env
+.env.docker
